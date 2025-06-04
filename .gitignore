@@ -1,0 +1,47 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.pnp.loader.mjs
+.yarn/
+
+# Build output
+/dist
+/build
+
+# Vite build cache and specific files
+.vite/
+vite-env.d.ts
+
+# Environment variables
+.env
+.env.*
+!.env.example
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE and OS specific
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+.DS_Store
+Thumbs.db
+
+# Test results and coverage
+/coverage
+*.lcov
+
+# Optional local config files
+vite.config.js.local
+vite.config.ts.local

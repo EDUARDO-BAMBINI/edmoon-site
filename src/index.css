@@ -1,0 +1,51 @@
+@tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #0c0a18; /* Fallback background */
+    }
+
+    code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+    }
+
+    /* Ensuring html and body take full height for the fixed background */
+    html, body, #root {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden; /* Prevent horizontal scroll from parallax stars */
+    }
+
+    /* Custom animation for flag dust */
+    .animate-dust {
+      animation: dust-animation 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes dust-animation {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        opacity: 0.3;
+        transform: translateY(5px) scale(1.1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(0px) scale(1);
+      }
+    }
+
+    /* Neon Glow Effect for Text */
+    .text-glow {
+      color: #f0e6ff; /* Lighter purple for the text itself */
+      /* text-shadow is handled by framer-motion for animation */
+    }
