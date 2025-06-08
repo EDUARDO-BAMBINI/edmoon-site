@@ -65,10 +65,17 @@ module.exports = {
 					from: { height: 'var(--radix-accordion-content-height)' },
 					to: { height: 0 },
 				},
+        // ДОДАНО: Анімація світіння для кнопки
+				'button-glow': {
+          'from': { boxShadow: '0 0 10px #34d399, 0 0 20px #34d399' },
+          'to': { boxShadow: '0 0 20px #34d399, 0 0 35px #34d399' },
+        },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+        // ДОДАНО: Реєстрація анімації світіння
+        'button-glow': 'button-glow 2s ease-in-out infinite alternate',
 			},
 		},
 	},
