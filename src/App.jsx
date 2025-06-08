@@ -26,7 +26,9 @@ function App() {
   return (
     <div className="relative min-h-screen text-white flex flex-col items-center justify-center overflow-hidden">
       
-      {/* Шар 1: Фонове зображення space.png */}
+      {/* ========================================================== */}
+      {/* ВСІ ШАРИ ФОНУ, ЗЕМЛІ ТА МІСЯЦЯ ЗАЛИШАЮТЬСЯ БЕЗ ЗМІН */}
+      {/* ========================================================== */}
       <div 
         className="absolute inset-0 w-full h-full z-0"
         style={{
@@ -35,18 +37,9 @@ function App() {
           backgroundPosition: 'center',
         }}
       />
-      
-      {/* Шар 2: Зірки */}
       <div className="absolute inset-0 z-10">
         <StarryBackground />
       </div>
-
-      {/* Перемикач мов у верхньому правому куті */}
-      <div className="absolute top-6 right-6 z-50">
-        <LanguageSwitcher />
-      </div>
-
-      {/* Шар 3: ЗОБРАЖЕННЯ ЗЕМЛІ */}
       <motion.img
         src={earthImage}
         alt="Земля на горизонті"
@@ -55,8 +48,6 @@ function App() {
         animate={{ opacity: 1, x: "-50%", y: 0, scale: 1 }} 
         transition={{ duration: 2.0, delay: 0.5, ease: "easeOut" }}
       />
-
-      {/* Шар 4: МІСЯЧНИЙ ГОРИЗОНТ (над Землею) */}
       <motion.img
         src={moonHorizonImage}
         alt="Місячний горизонт"
@@ -65,8 +56,28 @@ function App() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.8, delay: 0.1, ease: "easeOut" }}
       />
+
+      {/* ========================================================== */}
+      {/* ЗМІНИ ВНЕСЕНО ТІЛЬКИ В ЦЬОМУ БЛОЦІ                  */}
+      {/* ========================================================== */}
+
+      {/* НАПИС EDMOON - тепер у верхньому лівому куті */}
+      <motion.h1
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        // Додано класи для позиціонування
+        className="absolute top-6 left-6 z-50 text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400"
+      >
+        {t('edmoon_title', 'EDMOON')}
+      </motion.h1>
+
+      {/* Контейнер для елементів у верхньому правому куті */}
+      <div className="absolute top-6 right-6 z-50 flex items-center gap-4">
+        <LanguageSwitcher />
+      </div>
       
-      {/* Шар 5: Контейнер для логотипу та основного тексту (найвищий) */}
+      {/* Контейнер для центрального контенту (БЕЗ НАПИСУ EDMOON) */}
       <div className="absolute top-[5vh] md:top-[8vh] left-1/2 transform -translate-x-1/2 z-40 flex flex-col items-center text-center p-4">
         
         {/* Контейнер для логотипу та лічильника Supply */}
@@ -89,14 +100,7 @@ function App() {
           </motion.div>
         </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="mt-4 text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400"
-        >
-          {t('edmoon_title', 'EDMOON')}
-        </motion.h1>
+        {/* Напис EDMOON звідси видалено */}
 
         <motion.a
           href="#"
@@ -112,7 +116,7 @@ function App() {
           <img
             src={pancakeSwapButtonImage}
             alt={t('buy_button', 'Buy on PancakeSwap')}
-			className="h-12 w-auto transition-all duration-300 ease-in-out hover:drop-shadow-[0_0_15px_rgba(52,211,153,0.8)]" // Змінено h-14 на h-12
+            className="h-12 w-auto transition-all duration-300 ease-in-out hover:drop-shadow-[0_0_15px_rgba(52,211,153,0.8)]"
           />
         </motion.a>
 
@@ -142,7 +146,7 @@ function App() {
         >
           {t('tagline', 'To The Moon and Beyond!')}
         </motion.p>
-
+        
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
