@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import SupplyCounter from './components/SupplyCounter';
 import SocialButton from './components/SocialButton';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import ContractAddress from './components/ContractAddress';
 
 // Імпортуємо всі необхідні зображення
 import edmoonLogo from './assets/images/logo.png';
@@ -13,6 +14,7 @@ import earthImage from './assets/images/earth-image.png';
 import moonHorizonImage from './assets/images/moon_gorizont.png';
 import spaceBgImage from './assets/images/space.png';
 import pancakeSwapButtonImage from './assets/images/pancakeSwap.png';
+import spinningStarsImage from './assets/images/stars.png';
 
 // Імпортуємо мультиязичність 
 import './i18n';
@@ -26,9 +28,7 @@ function App() {
   return (
     <div className="relative min-h-screen text-white flex flex-col items-center justify-center overflow-hidden">
       
-      {/* ========================================================== */}
-      {/* ВСІ ШАРИ ФОНУ, ЗЕМЛІ ТА МІСЯЦЯ ЗАЛИШАЮТЬСЯ БЕЗ ЗМІН */}
-      {/* ========================================================== */}
+      {/* Шар 1: Фонове зображення space.png */}
       <div 
         className="absolute inset-0 w-full h-full z-0"
         style={{
@@ -37,9 +37,51 @@ function App() {
           backgroundPosition: 'center',
         }}
       />
-      <div className="absolute inset-0 z-10">
+      
+      {/* Шар 2: Зірки */}
+      <div className="absolute inset-0 z-35">
         <StarryBackground />
       </div>
+
+      {/* НАПИС EDMOON - у верхньому лівому куті */}
+      <motion.h1
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute top-6 left-6 z-50 text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400"
+      >
+        {t('edmoon_title', 'EDMOON')}
+      </motion.h1>
+      
+      {/* НАПИС "Landing Page Coming Soon..." - під написом EDMOON */}
+      <motion.p
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 1.4 }}
+        className="absolute top-[5.5rem] left-6 z-50 text-md text-gray-300"
+      >
+        {t('coming_soon', 'Landing Page Coming Soon...')}
+      </motion.p>
+
+      {/* Контейнер для елементів у верхньому правому куті */}
+      <div className="absolute top-6 right-6 z-50 flex items-center gap-4">
+        <LanguageSwitcher />
+      </div>
+	  
+	  {/* АНІМОВАНЕ КОЛО ЗІРОК - окремо від Землі */}
+      <motion.img
+        src={spinningStarsImage}
+        alt="Обертові зірки"
+        // Класи для позиціонування та розміру, щоб бути трохи більшим за Землю
+        className="absolute bottom-[5vh] inset-x-0 mx-auto w-full max-w-[400px] md:max-w-[560px] z-25 animate-spin-slow" //w-full max-w-[400px] md:max-w-[620px]
+        // z-25 - щоб бути над Землею (z-20), але за місячним горизонтом (z-30)
+        // animate-spin-slow - застосовує анімацію обертання
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2.0, delay: 2.5 }}
+      />
+
+      {/* Шар 3: ЗОБРАЖЕННЯ ЗЕМЛІ */}
       <motion.img
         src={earthImage}
         alt="Земля на горизонті"
@@ -48,6 +90,8 @@ function App() {
         animate={{ opacity: 1, x: "-50%", y: 0, scale: 1 }} 
         transition={{ duration: 2.0, delay: 0.5, ease: "easeOut" }}
       />
+
+      {/* Шар 4: МІСЯЧНИЙ ГОРИЗОНТ (над Землею) */}
       <motion.img
         src={moonHorizonImage}
         alt="Місячний горизонт"
@@ -56,28 +100,8 @@ function App() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.8, delay: 0.1, ease: "easeOut" }}
       />
-
-      {/* ========================================================== */}
-      {/* ЗМІНИ ВНЕСЕНО ТІЛЬКИ В ЦЬОМУ БЛОЦІ                  */}
-      {/* ========================================================== */}
-
-      {/* НАПИС EDMOON - тепер у верхньому лівому куті */}
-      <motion.h1
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        // Додано класи для позиціонування
-        className="absolute top-6 left-6 z-50 text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400"
-      >
-        {t('edmoon_title', 'EDMOON')}
-      </motion.h1>
-
-      {/* Контейнер для елементів у верхньому правому куті */}
-      <div className="absolute top-6 right-6 z-50 flex items-center gap-4">
-        <LanguageSwitcher />
-      </div>
       
-      {/* Контейнер для центрального контенту (БЕЗ НАПИСУ EDMOON) */}
+      {/* Шар 5: Контейнер для центрального контенту */}
       <div className="absolute top-[5vh] md:top-[8vh] left-1/2 transform -translate-x-1/2 z-40 flex flex-col items-center text-center p-4">
         
         {/* Контейнер для логотипу та лічильника Supply */}
@@ -99,8 +123,6 @@ function App() {
             <SupplyCounter />
           </motion.div>
         </div>
-
-        {/* Напис EDMOON звідси видалено */}
 
         <motion.a
           href="#"
@@ -147,15 +169,6 @@ function App() {
           {t('tagline', 'To The Moon and Beyond!')}
         </motion.p>
         
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2.3 }}
-          className="mt-6 text-md md:text-lg text-gray-300"
-        >
-          {t('coming_soon', 'Landing Page Coming Soon...')}
-        </motion.p>
-        
         <motion.div 
           className="mt-10 flex sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -183,6 +196,15 @@ function App() {
           >
             {t('socials.youtube', 'YouTube')}
           </SocialButton>
+        </motion.div>
+
+        <motion.div
+          className="w-full flex justify-center mt-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 3.0 }}
+        >
+          <ContractAddress />
         </motion.div>
       </div>
 

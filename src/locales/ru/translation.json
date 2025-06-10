@@ -2,6 +2,10 @@
   "tagline": "К Луне и дальше!",
   "coming_soon": "Лендинг скоро будет...",
   "buy_button": "Купить на PancakeSwap",
+  "contract_address": "Контракт",
+  "copy_button": "Копировать",
+  "copy_button_success": "Скопировано!",
+  "copy_button_error": "Ошибка копирования!",
   "socials": {
     "telegram": "Telegram",
     "twitter": "Twitter",

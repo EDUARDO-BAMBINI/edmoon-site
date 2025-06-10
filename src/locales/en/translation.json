@@ -1,12 +1,18 @@
 {
+  "edmoon_title": "EDMOON",
   "buy_button": "Buy on PancakeSwap",
   "tagline": "To The Moon and Beyond!",
   "coming_soon": "Landing Page Coming Soon...",
   "visitors": "Visitors",
-  "footer_created_by": "Created by ED",
+  "created_by": "Created by ED",
+  "contract_address": "Contract",
+  "copy_button": "Copy",
+  "copy_button_success": "Copied!",
+  "copy_button_error": "Error",
   "socials": {
     "telegram": "Telegram",
     "twitter": "Twitter",
     "youtube": "YouTube"
-  }
+  },
+  "supply_counter_title": "TOTAL SUPPLY"
 }

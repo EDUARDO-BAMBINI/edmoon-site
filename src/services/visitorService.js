@@ -1,12 +1,10 @@
-// src/services/visitorService.js
-
-const namespace = 'edmoon.net'; // Унікальний ідентифікатор для вашого сайту
+const namespace = 'edmoon.net';
 const key = 'visits';
 
-// Функція для реєстрації нового візиту та отримання актуальної кількості
 export const recordVisit = async () => {
   try {
-    const response = await fetch(`https://api.countapi.xyz/hit/<span class="math-inline">\{namespace\}/</span>{key}`);
+    const response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+    if (!response.ok) throw new Error('API response not OK');
     const data = await response.json();
     return data.value;
   } catch (error) {
@@ -15,10 +13,10 @@ export const recordVisit = async () => {
   }
 };
 
-// Функція для отримання кількості візитів без їх збільшення
 export const getVisitCount = async () => {
   try {
-    const response = await fetch(`https://api.countapi.xyz/get/<span class="math-inline">\{namespace\}/</span>{key}`);
+    const response = await fetch(`https://api.countapi.xyz/get/${namespace}/${key}`);
+    if (!response.ok) throw new Error('API response not OK');
     const data = await response.json();
     return data.value;
   } catch (error) {

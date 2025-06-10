@@ -58,24 +58,24 @@ module.exports = {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: { height: 0 },
+					from: { height: '0' },
 					to: { height: 'var(--radix-accordion-content-height)' },
 				},
 				'accordion-up': {
 					from: { height: 'var(--radix-accordion-content-height)' },
-					to: { height: 0 },
+					to: { height: '0' },
 				},
-        // ДОДАНО: Анімація світіння для кнопки
-				'button-glow': {
-          'from': { boxShadow: '0 0 10px #34d399, 0 0 20px #34d399' },
-          'to': { boxShadow: '0 0 20px #34d399, 0 0 35px #34d399' },
+        // ДОДАНО: Ключові кадри для анімації обертання
+				spin: {
+          'from': { transform: 'rotate(0deg)' },
+          'to': { transform: 'rotate(360deg)' },
         },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-        // ДОДАНО: Реєстрація анімації світіння
-        'button-glow': 'button-glow 2s ease-in-out infinite alternate',
+        // ДОДАНО: Реєстрація нашої нової анімації повільного обертання
+        'spin-slow': 'spin 60s linear infinite',
 			},
 		},
 	},

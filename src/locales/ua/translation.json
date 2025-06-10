@@ -4,6 +4,10 @@
   "coming_soon": "Лендінг скоро буде...",
   "visitors": "Відвідувачів",
   "footer_created_by": "Створено ED",
+  "contract_address": "Контракт",
+  "copy_button": "Копіювати",
+  "copy_button_success": "Скопійовано!",
+  "copy_button_error": "Помилка копіювання!",
   "socials": {
     "telegram": "Telegram",
     "twitter": "Twitter",
